@@ -19,7 +19,7 @@ pipeline{
             steps{
             gitCheckout(
                 branch: "main",
-                url: "https://github.com/vikash-kumar01/mrdevops_java_app.git"
+                url: "https://github.com/anilsb06/mrdevops_java_app.git"
             )
             }
         }
@@ -50,16 +50,6 @@ pipeline{
                    
                    def SonarQubecredentialsId = 'sonarqube-api'
                    statiCodeAnalysis(SonarQubecredentialsId)
-               }
-            }
-        }
-        stage('Quality Gate Status Check : Sonarqube'){
-         when { expression {  params.action == 'create' } }
-            steps{
-               script{
-                   
-                   def SonarQubecredentialsId = 'sonarqube-api'
-                   QualityGateStatus(SonarQubecredentialsId)
                }
             }
         }
